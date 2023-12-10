@@ -1,0 +1,16 @@
+{
+  "name": "biblio",
+  "version": "0.0.1",
+  "description": "a small java script framework",
+  "private": true,
+  "main": "index.js",
+  "workspaces": [
+    "packages/runtime"
+  ],
+  "scripts": {
+    "server:examples": "npx http-server . -o ./examples/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
