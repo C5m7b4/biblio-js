@@ -6,15 +6,6 @@ export const DOM_TYPES = {
   FRAGMENT: "fragment",
 };
 
-// export function h(tag, props = {}, children = []) {
-//   return {
-//     tag,
-//     props,
-//     children: mapTextNodes(withoutNulls(children)),
-//     type: DOM_TYPES.ELEMENT,
-//   };
-// }
-
 export function h(tag, props = {}, children = []) {
   return {
     tag,
