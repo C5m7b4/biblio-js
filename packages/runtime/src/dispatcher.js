@@ -16,7 +16,7 @@ export class Dispatcher {
 
     return () => {
       const idx = handlers.indexOf(handler);
-      handlers.splice(idx, 2);
+      handlers.splice(idx, 1);
     };
   }
 

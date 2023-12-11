@@ -1,6 +1,6 @@
 export function setAttributes(el, attrs) {
   const { class: className, style, ...otherAttrs } = attrs;
-
+  delete otherAttrs.key;
   if (className) {
     setClass(el, className);
   }
@@ -47,6 +47,11 @@ export function setAttribute(el, name, value) {
 }
 
 export function removeAttribute(el, name) {
-  el[name] = null;
+  try {
+    el[name] = null;
+  } catch {
+    console.warn(`Failed to set ${name} to null on ${el.tagName}`);
+  }
+
   el.removeAttribute(name);
 }

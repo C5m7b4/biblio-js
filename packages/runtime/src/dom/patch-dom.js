@@ -6,7 +6,7 @@ import {
   setAttribute,
   removeStyle,
   setStyle,
-} from "./attributes";
+} from "../attributes";
 import { objectsDiff } from "../utils/objects";
 import { arraysDiff, arraysDiffSequence, ARRAY_DIFF_OP } from "../utils/arrays";
 import { isNotBlankOrEmptyString } from "../utils/strings";
@@ -15,7 +15,7 @@ import { extractChildren } from "../h";
 
 export function patchDom(oldVdom, newVdom, parentEl) {
   if (!areNodesEqual(oldVdom, newVdom)) {
-    const index = findIndexInParent(parentEl, oldVdom.el);
+    const index = Array.from(parentEl.childNodes).indexOf(oldVdom.el);
     destroyDom(oldVdom);
     mountDom(newVdom, parentEl, index);
 
@@ -41,13 +41,13 @@ export function patchDom(oldVdom, newVdom, parentEl) {
   return newVdom;
 }
 
-function findIndexInParent(parentEl, el) {
-  const index = Array.from(parentEl.childNodes).indexOf(el);
-  if (index < 0) {
-    return null;
-  }
-  return index;
-}
+// function findIndexInParent(parentEl, el) {
+//   const index = Array.from(parentEl.childNodes).indexOf(el);
+//   if (index < 0) {
+//     return null;
+//   }
+//   return index;
+// }
 
 function patchText(oldVdom, newVdom) {
   const el = oldVdom.el;
@@ -72,7 +72,7 @@ function patchElement(oldVdom, newVdom) {
     style: newStyle,
     on: newEvents,
     ...newAttrs
-  } = newVdom;
+  } = newVdom.props;
 
   const { listeners: oldListeners } = oldVdom;
 

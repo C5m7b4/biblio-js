@@ -24,6 +24,8 @@ export function destroyDom(vdom) {
       throw new Error(`Can't destroy Dom of type: ${type}`);
     }
   }
+
+  delete vdom.el;
 }
 
 function removeTextNode(vdom) {

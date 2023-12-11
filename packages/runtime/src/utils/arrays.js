@@ -22,7 +22,7 @@ class ArrayWithOriginalIndices {
   #equalsFn;
 
   constructor(array, equalsFn) {
-    this.#array = array;
+    this.#array = [...array];
     this.#originalIndices = array.map((_, i) => i);
     this.#equalsFn = equalsFn;
   }
@@ -127,7 +127,7 @@ class ArrayWithOriginalIndices {
     return operation;
   }
 
-  removeItemAfter(index) {
+  removeItemsAfter(index) {
     const operations = [];
 
     while (this.length > index) {
