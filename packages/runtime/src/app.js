@@ -23,7 +23,7 @@ export function createApp({ state, view, reducers = {} }) {
 
   function renderApp() {
     if (vdom) {
-      destroyDom();
+      destroyDom(vdom);
     }
 
     vdom = view(state, emit);
