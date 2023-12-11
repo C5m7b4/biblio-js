@@ -1,4 +1,4 @@
-import { destroyDom, mountDom } from "./dom/index";
+import { destroyDom, mountDom, patchDom } from "./dom/index";
 import { Dispatcher } from "./dispatcher";
 
 export function createApp({ state, view, reducers = {} }) {
@@ -22,11 +22,9 @@ export function createApp({ state, view, reducers = {} }) {
   }
 
   function renderApp() {
-    if (vdom) {
-      destroyDom(vdom);
-    }
+    const newVdom = view(state, emit);
 
-    vdom = view(state, emit);
+    vdom = patchDom(vdom, newVdom, parentEl);
 
     mountDom(vdom, parentEl);
   }
@@ -34,7 +32,8 @@ export function createApp({ state, view, reducers = {} }) {
   return {
     mount(_parentEl) {
       parentEl = _parentEl;
-      renderApp();
+      vdom = view(state, emit);
+      mountDom(vdom, parentEl);
     },
     unmount() {
       destroyDom();
