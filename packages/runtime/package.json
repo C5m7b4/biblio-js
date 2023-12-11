@@ -1,10 +1,11 @@
 {
   "name": "biblio-js",
-  "version": "0.0.1",
-  "description": "",
-  "main": "dist/bibio.js",
+  "version": "1.0.0",
+  "description": "a small javascript framework",
+  "main": "dist/biblio.js",
   "files": [
-    "dist/bibio.js"
+    "dist/biblio.js",
+    "README.md"
   ],
   "scripts": {
     "prepack": "npm run build",
@@ -16,9 +17,13 @@
     "test:coverage": "vitest run --coverage",
     "view:coverage": "start coverage/index.html"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["javascript", "framework"],
+  "author": "C5m7b4",
+  "license": "MIT",
+  "repository": {
+    "type":"git",
+    "url": "https://github.com/C5m7b4/biblio-js"
+  },
   "devDependencies": {
     "@rollup/plugin-json": "^6.0.1",
     "@vitest/coverage-istanbul": "^1.0.4",
